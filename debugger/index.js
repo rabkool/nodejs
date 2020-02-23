@@ -5,6 +5,7 @@ const server = http.createServer((req, res) => {
     res.end('<h1> hello world </h1>')
 })
 
-server.listen(3000, () => {
-    console.log('listening on 3000 port')
+// 游览器访问 http://http://localhost:8080/
+server.listen(8080, () => {
+    console.log('listening on 8080 port')
 })

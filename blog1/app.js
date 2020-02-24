@@ -1,3 +1,4 @@
+const querystring = require('querystring')
 const handleBlogRouter = require('./src/router/blog')
 const hadleUserRouter = require('./src/router/user')
 
@@ -6,6 +7,12 @@ const serverHandle = (req, res) => {
     res.setHeader('Content-type', 'application/json')
     // env: process.env.NODE_ENV
 
+    const url = req.url
+    req.path = url.split('?')[0]
+
+    // query
+    req.query = querystring.parse(url.split('?')[0])
+    
     // blog 路由
     const blogData = handleBlogRouter(req, res)
     if (blogData) {

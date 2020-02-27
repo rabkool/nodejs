@@ -2,6 +2,34 @@ const querystring = require('querystring')
 const handleBlogRouter = require('./src/router/blog')
 const hadleUserRouter = require('./src/router/user')
 
+// 処理 post data
+const getPostData = (req) => {
+    const promise = new Promise((resolve, reject) => {
+        if (req.method !== 'POST') {
+            resolve({})
+            return
+        }
+        if (req.headers['content-type'] !== 'application/json') {
+            resolve({})
+            return
+        }
+        let postData = ''
+        req.on('data', chunk => {
+            postData += chunk.toString()
+        })
+        req.on('end', () =>{
+            if (!postData) {
+                resolve({})
+                return
+            }
+            resolve(
+                JSON.parse(postData)
+            )
+        })
+    })
+    return promise
+}
+
 const serverHandle = (req, res) => {
     // 设置返回格式 JSON
     res.setHeader('Content-type', 'application/json')
@@ -11,8 +39,12 @@ const serverHandle = (req, res) => {
     req.path = url.split('?')[0]
 
     // query
-    req.query = querystring.parse(url.split('?')[0])
-    
+    req.query = querystring.parse(url.split('?')[1])
+
+    // 処理 post data
+    getPostData(req).then(postData => {
+        req.body = postData
+
     // blog 路由
     const blogData = handleBlogRouter(req, res)
     if (blogData) {
@@ -35,6 +67,7 @@ const serverHandle = (req, res) => {
     res.writeHead(404, {'Content': 'text/plain'})
     res.write('404 Not Found\n')
     res.end()
+    })
 }
 
 module.exports = serverHandle

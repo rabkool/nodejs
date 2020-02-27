@@ -15,10 +15,20 @@ const getList = (author, keyword) => {
             createTime: 1,
             author: 'B'
         }
-
     ]
 }
 
+const getDetail = (id) => {
+    return {
+        id: 1,
+        title: 'getDetail',
+        content: 'getDetail A',
+        createTime: 1,
+        author: 'A'
+    }
+}
+
 module.exports = {
-    getList
+    getList,
+    getDetail
 }

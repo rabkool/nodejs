@@ -1,11 +1,17 @@
+const { loginCheck } = require('../controller/user')
+const { SuccessModel, ErrorModel } = require('../model/resModel')
+
 const hadleUserRouter = (req, res) => {
     const method = req.method
 
     // 登入
     if (method === 'POST' && req.path === '/api/login') {
-        return {
-            mgs: '登入'
+        const { username, password } = req.body
+        const result = loginCheck(username, password)
+        if (result) {
+            return new SuccessModel()
         }
+        return new ErrorModel('login失敗')
     }
 }
 

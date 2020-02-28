@@ -1,6 +1,6 @@
 # node.js
 
-#### 指令
+### 指令
 ##### 初始化npm: 
 ``` 
 npm init -y
@@ -12,7 +12,7 @@ npm i lodash --save
 ```
 
 
-#### mysql error
+### mysql error
 ##### Error: 
 ```
 ER_NOT_SUPPORTED_AUTH_MODE: Client does not support authentication protocol requested by server; consider upgrading MySQL client

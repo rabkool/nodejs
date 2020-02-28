@@ -1,4 +1,4 @@
-## node.js
+# node.js
 
 #### 指令
 ##### 初始化npm: 
@@ -37,5 +37,5 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password
 
 3. 刷新权限（不输入也可以）
 ```
-FLUSH PRIVILEGES; 
+FLUSH PRIVILEGES;
 ```

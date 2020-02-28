@@ -1,24 +1,24 @@
 ## node.js
 
 #### 指令
-##### 初始化npm: 
+##### 初始化npm:
 ``` 
 npm init -y
 ```
 
-##### 安装lodash: 
+##### 安装lodash:
 ```
 npm i lodash --save
 ```
 
 
 #### mysql error
-##### Error: 
+##### Error:
 ```
 ER_NOT_SUPPORTED_AUTH_MODE: Client does not support authentication protocol requested by server; consider upgrading MySQL client
 ```
 
-##### 原因: 
+##### 原因:
 ```
 修改加密规则为普通模式，默认是严格加密模式
 ```

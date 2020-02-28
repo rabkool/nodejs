@@ -11,6 +11,7 @@ npm init -y
 npm i lodash --save
 ```
 
+<<<<<<< HEAD
 
 #### mysql error
 ##### Error: 
@@ -26,16 +27,35 @@ ER_NOT_SUPPORTED_AUTH_MODE: Client does not support authentication protocol requ
 ##### 解决办法:
 
 1. 修改加密规则 （必写）
+=======
+#### mysql error
+error：Error: ER_NOT_SUPPORTED_AUTH_MODE: Client does not support authentication protocol requested by server; consider upgrading MySQL client
+
+原因: 修改加密规则为普通模式，默认是严格加密模式
+
+
+解决办法:
+
+修改加密规则 （必写）
+>>>>>>> 3deaae4987da11be3a39066c3909f79aafd294cf
 ```
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'password' PASSWORD EXPIRE NEVER;
 ```
 
+<<<<<<< HEAD
 2. 更新用户密码
+=======
+更新用户密码
+>>>>>>> 3deaae4987da11be3a39066c3909f79aafd294cf
 ```
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
 ```
 
+<<<<<<< HEAD
 3. 刷新权限（不输入也可以）
+=======
+刷新权限（不输入也可以）
+>>>>>>> 3deaae4987da11be3a39066c3909f79aafd294cf
 ```
 FLUSH PRIVILEGES;
 ```

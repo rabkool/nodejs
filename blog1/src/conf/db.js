@@ -1,12 +1,6 @@
 const env = process.env.NODE_ENV
 
-let MYSQL_CONF = {
-    host:'127.0.0.1',
-    user: 'root',
-    password: 'rabkool',
-    port: '3306',
-    database: 'myblog'
-}
+let MYSQL_CONF
 
 if (env === 'dev') {
     MYSQL_CONF = {

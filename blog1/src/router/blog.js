@@ -25,15 +25,23 @@ const handleBlogRouter = (req, res) => {
 
     // 获取详情
     if (method === 'GET' && req.path === '/api/detail') {
-        const data = getDetail(id)
-
-        return new SuccessModel(data)
+        // const data = getDetail(id)
+        // return new SuccessModel(data)
+        const result = getDetail(id)
+        return result.then(data => {
+            return new SuccessModel(data)
+        })
     }
 
     // 建立
     if (method === 'POST' && req.path === '/api/new') {
-        const blogData = newBlog(req.body)
-        return new SuccessModel(blogData)
+        // const blogData = newBlog(req.body)
+        // return new SuccessModel(blogData)
+        req.body.author= 'rabkool'
+        const result = newBlog(req.body)
+        return result.then(data => {
+            return new SuccessModel(data)
+        })
     }
 
     // 更新

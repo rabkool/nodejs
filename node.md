@@ -39,3 +39,7 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password
 ```
 FLUSH PRIVILEGES;
 ```
+
+#### git
+新建文件删除
+git clean -df

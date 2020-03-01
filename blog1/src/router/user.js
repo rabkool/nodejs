@@ -8,10 +8,13 @@ const hadleUserRouter = (req, res) => {
     if (method === 'POST' && req.path === '/api/login') {
         const { username, password } = req.body
         const result = loginCheck(username, password)
-        if (result) {
-            return new SuccessModel()
-        }
-        return new ErrorModel('login失敗')
+        return result.then(data => {
+            if (data.username) {
+                return new SuccessModel()
+            }
+            return new ErrorModel('login失敗')
+
+        })
     }
 }
 

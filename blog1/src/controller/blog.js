@@ -56,7 +56,7 @@ const updateBlog  = (id, blogData = {}) => {
 }
 
 const delBlog  = (id, author) => {
-    // 判定id = id author = author不是他人author 
+    // 判定id = id author = author不是他人author 无法删除别人
     const sql = `
         delete from blogs where id=${id} and author='${author}'
     `

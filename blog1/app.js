@@ -65,11 +65,21 @@ const serverHandle = (req, res) => {
     // }
 
     // user路由
-    const userData = hadleUserRouter(req, res)
-    if (userData) {
-        res.end(
-            JSON.stringify(userData)
-        )
+    // const userData = hadleUserRouter(req, res)
+    // if (userData) {
+    //     res.end(
+    //         JSON.stringify(userData)
+    //     )
+    //     return
+    // }
+
+    const userResult= hadleUserRouter(req, res)
+    if (userResult){
+        userResult.then(userData => {
+            res.end(
+                JSON.stringify(userData)
+            )    
+        })
         return
     }
 

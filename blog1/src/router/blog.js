@@ -3,8 +3,17 @@ const {
     getDetail,
     newBlog,
     updateBlog,
-    delBlog } = require('../controller/blog')
+    delBlog 
+} = require('../controller/blog')
 const { SuccessModel, ErrorModel } = require('../model/resModel')
+
+const loginCheck = (req) => {
+    if(!req.session.username){
+        return Promise.resolve(
+            new ErrorModel('未login')
+        )
+    }
+}
 
 const handleBlogRouter = (req, res) => {
     const method = req.method
@@ -37,7 +46,14 @@ const handleBlogRouter = (req, res) => {
     if (method === 'POST' && req.path === '/api/new') {
         // const blogData = newBlog(req.body)
         // return new SuccessModel(blogData)
-        req.body.author= 'rabkool'
+        
+        const loginCheckResult = loginCheck(req)
+        if (loginCheckResult) {
+            // 未登录
+            return loginCheck
+        }
+
+        req.body.author= req.session.username
         const result = newBlog(req.body)
         return result.then(data => {
             return new SuccessModel(data)
@@ -46,6 +62,12 @@ const handleBlogRouter = (req, res) => {
 
     // 更新
     if (method === 'POST' && req.path === '/api/update') {
+        const loginCheckResult = loginCheck(req)
+        if (loginCheckResult) {
+            // 未登录
+            return loginCheck
+        }
+
         const result = updateBlog(id, req.body)
         return result.then(val => {
             if(val) {
@@ -58,7 +80,13 @@ const handleBlogRouter = (req, res) => {
 
     // 删除
     if (method === 'POST' && req.path === '/api/delete') {
-        const author= 'rabkool'
+        const loginCheckResult = loginCheck(req)
+        if (loginCheckResult) {
+            // 未登录
+            return loginCheck
+        }
+        
+        const author= req.session.username
         const result = delBlog(id, author)
         return result.then(val =>{
             if(val){

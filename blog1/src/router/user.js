@@ -5,9 +5,9 @@ const hadleUserRouter = (req, res) => {
     const method = req.method
 
     // 登入
-    if (method === 'GET' && req.path === '/api/login') {
-        // const { username, password } = req.body
-        const { username, password } = req.query
+    if (method === 'POST' && req.path === '/api/login') {
+        const { username, password } = req.body
+        // const { username, password } = req.query
         const result = login(username, password)
         return result.then(data => {
             if (data.username) {
@@ -16,6 +16,8 @@ const hadleUserRouter = (req, res) => {
                 req.session.realname = data.realname
 
                 console.log('req.session is ', req.session)
+                // 同步到 redis
+                set(req.sessionId, req.session)
 
                 return new SuccessModel()
             }
@@ -24,7 +26,7 @@ const hadleUserRouter = (req, res) => {
     }
 
     if (method === 'GET' && req.path === '/api/logintest') {
-        if(req.session.username){
+        if(req.session.username) {
             return Promise.resolve(
                 new SuccessModel({
                     // 返回session

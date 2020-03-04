@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "mysql": "^2.18.1",
-    "prettier": "^1.12.1"
+    "prettier": "^1.12.1",
+    "redis": "^3.0.2"
   }
 }

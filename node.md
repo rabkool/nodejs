@@ -12,6 +12,12 @@ npm i lodash --save
 ```
 
 
+##### 安装lodash:
+```
+npm i redis --save
+```
+
+
 #### mysql error
 ##### Error:
 ```

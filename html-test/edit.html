@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>编辑博客</title>
+    <title>编辑</title>
     <style type="text/css">
         body {
             margin: 0 20px;
@@ -26,7 +26,7 @@
     </style>
 </head>
 <body>
-    <h1 style="border-bottom: 1px solid #ccc; padding-bottom: 10px;">编辑博客</h1>
+    <h1 style="border-bottom: 1px solid #ccc; padding-bottom: 10px;">编辑</h1>
     <div>
         <div class="title-wrapper">
             <input id="text-title">
@@ -75,9 +75,9 @@
         const $textContent = $('#text-content')
         const $btnUpdate = $('#btn-update')
 
-        // 获取博客内容
+        // 获取内容
         const urlParams = getUrlParams()
-        const url = '/api/blog/detail?id=' + urlParams.id
+        const url = '/api/detail?id=' + urlParams.id
         get(url).then(res => {
             if (res.errno !== 0) {
                 alert('操作错误')

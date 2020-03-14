@@ -29,7 +29,7 @@
 <body>
     <h1 style="border-bottom: 1px solid #ccc; padding-bottom: 10px;">管理中心</h1>
     <p>
-        <a href="/new.html">新建博客</a>
+        <a href="/new.html">新建</a>
     </p>
     <div style="margin-bottom: 10px;">
         <input id="text-keyword">
@@ -37,7 +37,7 @@
     </div>
     <table id="table-container">
         <tr>
-            <th>博客标题</th>
+            <th>标题</th>
             <th colspan="2">操作</th>
         </tr>
     </table>
@@ -79,7 +79,7 @@
         const $tableContainer = $('#table-container')
 
         // 拼接接口 url
-        let url = '/api/blog/list?isadmin=1'  // 增加一个 isadmin=1 参数，使用登录者的用户名，后端也需要修改 ！！！
+        let url = '/api/list?isadmin=1'  // 增加一个 isadmin=1 参数，使用登录者的用户名，后端也需要修改 ！！！
         const urlParams = getUrlParams()
         if (urlParams.keyword) {
             url += '&keyword=' + urlParams.keyword
@@ -125,7 +125,7 @@
             }
 
             if (confirm('确定删除？')) {
-                const url = '/api/blog/del?id=' + $target.attr('data-id')
+                const url = '/api/delete?id=' + $target.attr('data-id')
                 post(url).then(res => {
                     if (res.errno !== 0) {
                         alert('操作错误')

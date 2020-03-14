@@ -108,6 +108,23 @@ redis-server.exe redis.windows.conf
 redis-cli.exe -h 127.0.0.1 -p 6379
 ```
 
+#### 前端联调
+- 登录功能依赖cookiz 必须用游览器联调
+- cookiz跨域不共享 前端和server端必须同域
+- 需要使用ngnix 做代理 让前后端同域
+
+##### httpserver
+安装httpserver
+```
+# -g 是全局变量意思
+npm install http-server -g
+```
+
+启动
+```
+# -p 设置端口
+http-server -p 8001 
+```
   
 #### nginx
  - 高性能web服务器
@@ -136,3 +153,5 @@ nginx -s stop
 
 worker_processess 2
  - 配置cpu核数为2核
+
+

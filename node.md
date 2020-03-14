@@ -113,3 +113,23 @@ redis-cli.exe -h 127.0.0.1 -p 6379
  - 高性能web服务器
  - 一般用于静态服务 负载均衡
  - 反像代理
+
+测试配置文件格式是否正确 
+```
+nginx -t
+```
+
+启动
+```
+start nginx
+```
+
+重启
+```
+nginx -s reload
+```
+
+停止
+```
+nginx -s stop
+```

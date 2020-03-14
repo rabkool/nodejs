@@ -133,3 +133,6 @@ nginx -s reload
 ```
 nginx -s stop
 ```
+
+worker_processess 2
+ - 配置cpu核数为2核

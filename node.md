@@ -12,7 +12,7 @@ npm i lodash --save
 ```
 
 
-##### 安装lodash:
+##### 安装redis:
 ```
 npm i redis --save
 ```
